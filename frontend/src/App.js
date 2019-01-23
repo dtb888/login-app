@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
+import User from './components/User'
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
@@ -19,7 +20,7 @@ const DisplayLinks = props => {
             </Link>
           </li>
           <li>
-            <Link to="#" className="nav-link" onClick={props._logout}>
+            <Link to="/" className="nav-link" onClick={props._logout}>
               Logout
             </Link>
           </li>
@@ -118,7 +119,6 @@ class App extends Component {
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
         {/*  ROUTES */}
-        {/* <Route exact path="/" component={Home} /> */}
         <Route exact path="/" render={() => <Home user={this.state.user} />} />
         <Route
           exact
@@ -129,7 +129,8 @@ class App extends Component {
             />}
         />
         <Route exact path="/signup" component={SignupForm} />
-        {/* <LoginForm _login={this._login} /> */}
+        <Route exact path="/user" render={() => <Home user={this.state.user} />} />
+        
       </div>
     )
   }

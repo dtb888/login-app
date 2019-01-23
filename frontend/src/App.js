@@ -10,9 +10,6 @@ import Home from './components/Home'
 import User from './components/User'
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-132910182-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
-
 const DisplayLinks = props => {
   if (props.loggedIn) {
     return (
@@ -67,6 +64,8 @@ class App extends Component {
     this._login = this._login.bind(this)
   }
   componentDidMount() {
+    ReactGA.initialize('UA-132910182-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
     axios.get('/auth/user').then(response => {
       console.log(response.data)
       if (!!response.data.user) {

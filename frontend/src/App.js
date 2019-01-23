@@ -65,7 +65,6 @@ class App extends Component {
   }
   componentDidMount() {
     ReactGA.initialize('UA-132910182-1');
-    ReactGA.pageview(window.location.pathname + window.location.search);
     axios.get('/auth/user').then(response => {
       console.log(response.data)
       if (!!response.data.user) {
@@ -116,6 +115,7 @@ class App extends Component {
   }
 
   render() {
+    ReactGA.pageview(window.location.pathname);
     return (
       <div className="App">
         <Header user={this.state.user} />
@@ -133,7 +133,6 @@ class App extends Component {
         />
         <Route exact path="/signup" component={SignupForm} />
         <Route exact path="/user" render={() => <User user={this.state.user} />} />
-        
       </div>
     )
   }

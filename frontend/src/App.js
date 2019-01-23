@@ -64,7 +64,6 @@ class App extends Component {
     this._login = this._login.bind(this)
   }
   componentDidMount() {
-    ReactGA.initialize('UA-132910182-1');
     axios.get('/auth/user').then(response => {
       console.log(response.data)
       if (!!response.data.user) {
@@ -115,6 +114,7 @@ class App extends Component {
   }
 
   render() {
+    ReactGA.initialize('UA-132910182-1');
     ReactGA.pageview(window.location.pathname);
     return (
       <div className="App">

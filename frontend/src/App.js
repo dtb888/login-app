@@ -8,6 +8,10 @@ import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
 import User from './components/User'
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-132910182-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
@@ -129,7 +133,7 @@ class App extends Component {
             />}
         />
         <Route exact path="/signup" component={SignupForm} />
-        <Route exact path="/user" render={() => <Home user={this.state.user} />} />
+        <Route exact path="/user" render={() => <User user={this.state.user} />} />
         
       </div>
     )
